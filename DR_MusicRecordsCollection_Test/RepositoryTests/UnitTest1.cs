@@ -1,4 +1,4 @@
-﻿namespace DR_MusicRecordsCollection_Test
+﻿namespace DR_MusicRecordsCollection_Test.RepositoryTests
 {
     public class UnitTest1
     {
