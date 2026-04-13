@@ -2,6 +2,7 @@
 {
     public class Record
     {
+        public int ID { get; set; }
         public string? Title {  get; set; }
         public string? Artist { get; set; }
         public int Duration { get; set; }
@@ -15,8 +16,9 @@
             PublicationYear = 0;
         }
 
-        public Record(string title, string artist, int duration, int publicationYear)
+        public Record(int id,string title, string artist, int duration, int publicationYear)
         {
+            ID = id;
             Title = title;
             Artist = artist;
             Duration = duration;
