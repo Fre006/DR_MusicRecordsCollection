@@ -35,7 +35,24 @@ namespace DR_MusicRecordsCollection.Controllers
                 return Ok(result);
             }
         }
-        
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult<IEnumerable<Record>> GetByTitle([FromBody] string title)
+        {
+            var result = _recordsRepo.GetByTitle(title);
+            if (result == null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return Ok(result);
+            }
+        }
+
 
     }
 }

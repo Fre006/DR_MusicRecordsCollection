@@ -18,5 +18,18 @@ namespace DR_MusicRecordsCollection.Repos
         {
             return _dbContext.Records;
         }
+
+        public IEnumerable<Record> GetByTitle(string title)
+        {
+            return _dbContext.Records.Where(x => x.Title == title);
+        }
+        public IEnumerable<Record> GetByArtist(string artist)
+        {
+            return _dbContext.Records.Where(x => x.Artist == artist);
+        }
+        public IEnumerable<Record> GetByPublicationYear(int pubYear)
+        {
+            return _dbContext.Records.Where(x => x.PublicationYear == pubYear);
+        }
     }
 }
