@@ -9,7 +9,7 @@ namespace DR_MusicRecordsCollection_Test.RepositoryTests
     {
         private IRecordsRepo _recordsRepo;
 
-        public RecordsRepoTests(RecordsDBContext context)
+        public RecordsRepoTests()
         {
             _recordsRepo = new RecordsRepo();
         }
@@ -18,11 +18,14 @@ namespace DR_MusicRecordsCollection_Test.RepositoryTests
         {
             if (_recordsRepo != null)
             {
-                List<DR_MusicRecordsCollection.Models.Record> TestRecords = (List<DR_MusicRecordsCollection.Models.Record>)_recordsRepo.GetAll();
-                Assert.True(TestRecords[0].Title == "Bohemian Rhapsody");
-                Assert.True(TestRecords[0].Artist == "Queen");
-                Assert.True(TestRecords[0].Duration == 354);
-                Assert.True(TestRecords[0].PublicationYear == 1975);
+                IEnumerable<DR_MusicRecordsCollection.Models.Record> TestRecords = (IEnumerable<DR_MusicRecordsCollection.Models.Record>)_recordsRepo.GetAll();
+                var testRecordsList = TestRecords.ToList<DR_MusicRecordsCollection.Models.Record>();
+                DR_MusicRecordsCollection.Models.Record Queen = new DR_MusicRecordsCollection.Models.Record { ID = 1, Title = "Bohemian Rhapsody", Artist = "Queen", Duration = 354, PublicationYear = 1975 };
+                Assert.True(testRecordsList[0].Title == "Bohemian Rhapsody");
+                Assert.True(testRecordsList[0].Artist == "Queen");
+                Assert.True(testRecordsList[0].Duration == 354);
+                Assert.True(testRecordsList[0].PublicationYear == 1975);
+                Assert.True(testRecordsList.Count >= 3);
 
             }
         }
